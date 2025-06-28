@@ -1,0 +1,25 @@
+-- Constraints
+
+-- a. Books table with Price > 0
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    Price DECIMAL(10, 2) CHECK (Price > 0)
+);
+
+-- b. UNIQUE constraint on Email
+ALTER TABLE Users
+ADD CONSTRAINT UQ_Email UNIQUE (Email);
+
+-- c. Students table with PK and FK
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(100)
+);
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    CourseID INT FOREIGN KEY REFERENCES Courses(CourseID)
+);

@@ -1,0 +1,17 @@
+-- DDL Statements
+
+-- a. Create Students table
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Course VARCHAR(50)
+);
+
+-- b. Alter Students table to add PhoneNumber
+ALTER TABLE Students
+ADD PhoneNumber VARCHAR(15);
+
+-- c. Drop the Course column
+ALTER TABLE Students
+DROP COLUMN Course;

@@ -1,0 +1,15 @@
+-- DML Statements
+
+-- a. Insert 3 records
+INSERT INTO Students (StudentID, Name, Age, PhoneNumber) VALUES (1, 'Ali', 20, '03001234567');
+INSERT INTO Students (StudentID, Name, Age, PhoneNumber) VALUES (2, 'Sara', 19, '03007654321');
+INSERT INTO Students (StudentID, Name, Age, PhoneNumber) VALUES (3, 'Ahmed', 17, '03111234567');
+
+-- b. Update age of Ali to 22
+UPDATE Students
+SET Age = 22
+WHERE Name = 'Ali';
+
+-- c. Delete students with Age < 18
+DELETE FROM Students
+WHERE Age < 18;

@@ -1,0 +1,17 @@
+-- Views
+
+-- a. v_StudentDetails
+CREATE VIEW v_StudentDetails AS
+SELECT Name, Age
+FROM Students;
+
+-- b. View for students > 21
+CREATE VIEW v_StudentsAbove21 AS
+SELECT *
+FROM Students
+WHERE Age > 21;
+
+-- c. Modify v_StudentDetails to add PhoneNumber
+ALTER VIEW v_StudentDetails AS
+SELECT Name, Age, PhoneNumber
+FROM Students;

@@ -1,0 +1,12 @@
+-- ER Diagram
+
+Entities:
+- Students (StudentID PK, Name, Age, PhoneNumber, CourseID FK)
+- Courses (CourseID PK, CourseName)
+- Instructors (InstructorID PK, Name, Department)
+
+Relationships:
+- Students : Courses → M:1 (Many students can enroll in one course)
+- Students : Instructors → M:N (Many students can have many instructors via Courses)
+
+(Draw diagram in draw.io, Lucidchart, or notebook for submission.)

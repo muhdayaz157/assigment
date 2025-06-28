@@ -1,0 +1,17 @@
+-- Subqueries
+
+-- a. Students older than average
+SELECT Name
+FROM Students
+WHERE Age > (SELECT AVG(Age) FROM Students);
+
+-- b. Departments with > 5 students
+SELECT DepartmentID
+FROM Students
+GROUP BY DepartmentID
+HAVING COUNT(*) > 5;
+
+-- c. Student(s) with highest age
+SELECT Name
+FROM Students
+WHERE Age = (SELECT MAX(Age) FROM Students);

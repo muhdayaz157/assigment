@@ -1,0 +1,16 @@
+-- Data Types
+
+-- a. Create Products table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Price DECIMAL(10, 2),
+    ManufactureDate DATE
+);
+
+-- b. VARCHAR vs NVARCHAR:
+-- VARCHAR stores non-Unicode strings using 1 byte per character.
+-- NVARCHAR stores Unicode strings using 2 bytes per character.
+-- Example:
+DECLARE @a VARCHAR(10) = 'Ali';
+DECLARE @b NVARCHAR(10) = N'Ali';

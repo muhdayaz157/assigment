@@ -1,0 +1,18 @@
+-- Programming in Transact-SQL
+
+DECLARE @Counter INT = 1;
+DECLARE @Total INT;
+SELECT @Total = COUNT(*) FROM Students;
+
+WHILE @Counter <= @Total
+BEGIN
+    DECLARE @Name VARCHAR(50);
+    SELECT @Name = Name FROM (
+        SELECT Name, ROW_NUMBER() OVER (ORDER BY Name) AS RowNum FROM Students
+    ) AS Temp
+    WHERE RowNum = @Counter;
+
+    PRINT @Name;
+
+    SET @Counter = @Counter + 1;
+END;

@@ -1,0 +1,35 @@
+-- Triggers
+
+-- a. After trigger for deletions
+CREATE TABLE DeletedStudents (
+    StudentID INT,
+    Name VARCHAR(50),
+    Age INT,
+    DeletedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TRIGGER trg_AfterDelete_Students
+ON Students
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO DeletedStudents (StudentID, Name, Age)
+    SELECT StudentID, Name, Age FROM DELETED;
+END;
+
+-- b. Instead of trigger for preventing Age < 16
+CREATE TRIGGER trg_PreventUnderageInsert
+ON Students
+INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (SELECT * FROM INSERTED WHERE Age < 16)
+    BEGIN
+        RAISERROR ('Cannot insert student with age less than 16.', 16, 1);
+    END
+    ELSE
+    BEGIN
+        INSERT INTO Students (StudentID, Name, Age, PhoneNumber, CourseID)
+        SELECT StudentID, Name, Age, PhoneNumber, CourseID FROM INSERTED;
+    END
+END;

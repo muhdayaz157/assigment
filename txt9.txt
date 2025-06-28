@@ -1,0 +1,34 @@
+-- Stored Procedures
+
+-- a. Insert new student
+CREATE PROCEDURE InsertStudent
+    @StudentID INT,
+    @Name VARCHAR(50),
+    @Age INT,
+    @PhoneNumber VARCHAR(15),
+    @CourseID INT
+AS
+BEGIN
+    INSERT INTO Students (StudentID, Name, Age, PhoneNumber, CourseID)
+    VALUES (@StudentID, @Name, @Age, @PhoneNumber, @CourseID);
+END;
+
+-- b. Get students by department
+CREATE PROCEDURE GetStudentsByDepartment
+    @DepartmentID INT
+AS
+BEGIN
+    SELECT * FROM Students
+    WHERE DepartmentID = @DepartmentID;
+END;
+
+-- c. Update student age
+CREATE PROCEDURE UpdateStudentAge
+    @StudentID INT,
+    @NewAge INT
+AS
+BEGIN
+    UPDATE Students
+    SET Age = @NewAge
+    WHERE StudentID = @StudentID;
+END;

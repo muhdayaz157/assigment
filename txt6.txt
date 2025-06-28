@@ -1,0 +1,11 @@
+-- Joins
+
+-- a. INNER JOIN
+SELECT s.Name, c.CourseName
+FROM Students s
+INNER JOIN Courses c ON s.CourseID = c.CourseID;
+
+-- b. FULL OUTER JOIN
+SELECT s.Name, c.CourseName
+FROM Students s
+FULL OUTER JOIN Courses c ON s.CourseID = c.CourseID;

@@ -1,0 +1,18 @@
+-- Transactions
+
+-- a. Transfer Rs. 500
+BEGIN TRANSACTION;
+UPDATE Accounts SET Balance = Balance - 500 WHERE AccountID = 1;
+UPDATE Accounts SET Balance = Balance + 500 WHERE AccountID = 2;
+COMMIT;
+
+-- b. Insert student and log with rollback if logging fails
+BEGIN TRANSACTION;
+BEGIN TRY
+    INSERT INTO Students (StudentID, Name, Age) VALUES (4, 'Usman', 21);
+    INSERT INTO Logs (Action) VALUES ('Inserted student Usman');
+    COMMIT;
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+END CATCH;
